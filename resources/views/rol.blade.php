@@ -1,11 +1,13 @@
 @extends('layouts.Admin')
 @section('content')
-<div class="container">
+<div class="container" id="divinicio">
     <div  class="row">
         <div class="col-md-12 col-md-offset-2"style="margin-top:20px">
         <div class="card bg-light mb-3 " >
           <div class="card-header"><h5 class="card-title">Roles Activos  <a href="#" id="agregarModal" class="'btn btn-primary btn-sm" role="button" aria-pressed="true" data-toggle="modal" data-target="#modalagregar">NUEVO ROL</a></h5></div>
-
+          <div id="message-update" class="alert alert-success alert-dismissible" role="alert" style="display:none" >
+            <strong>Operacion Exitosa.</strong>
+          </div>
           <div class="card-body">
             <table class="table">
               <thead>
@@ -18,10 +20,8 @@
                 <td>{{$rol->id}}</td>
                 <td>{{$rol->nombre}}</td>
                 <td>
-                  <div class="row justify-content-center">
-                    <a href="#" id="ModalEditar" class="editar-btn btn btn-primary btn-sm" role="button" aria-pressed="true" data-toggle="modal" data-target="#modalEditar">Editar</a>
+                    <a href="#" id="ModalEditar" class="editar-btn btn btn-primary btn-sm" role="button" aria-pressed="true" data-toggle="modal" data-target="#modalEditar" value="{{$rol->id}}" onclick="mostrar({{$rol->id}});">Editar</a>
                     <a href="#" class="'btn btn-danger btn-sm" role="button" aria-pressed="true" data-toggle="modal" data-target="#EliminarModal">Eliminar</a>
-                  </div>
                 </td>
               </tbody>
                 @endforeach

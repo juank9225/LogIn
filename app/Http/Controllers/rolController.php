@@ -4,7 +4,7 @@ namespace SoftVet\Http\Controllers;
 
 use SoftVet\Rol;
 use Illuminate\Http\Request;
-
+use SoftVet\Http\Requests\RolRequest;
 class rolController extends Controller
 {
     /**
@@ -34,16 +34,19 @@ class rolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RolRequest $request)
     {
       if($request->ajax()){
         $rol = new Rol();
         $rol->id = $request->id;
         $rol->nombre = $request->nombre;
         $rol->save();
-        return response()->json([
-          "guradado correcta mente"
-   ]);
+        $respuesta=$rol;
+        if($respuesta){
+          return response()->json(['success'=>'true']);
+        }else{
+          return response()->json(['success'=>'false']);
+        }
  }
     }
 
@@ -66,7 +69,9 @@ class rolController extends Controller
      */
     public function edit($id)
     {
-
+      $rol=Rol::find($id);
+      return $rol;
+      return response()->json($rol);
     }
 
     /**
@@ -83,11 +88,14 @@ class rolController extends Controller
         $rol = Rol::where('id','=',$id)->firstOrfail();
         $rol->nombre = $request->nombre;
         $rol->save();
-         return response()->json([
-          "Editado correcta mente "=>$request->id
-   ]);
- }
-    }
+        $respuesta=$rol;
+        if($respuesta){
+          return response()->json(['success'=>'true']);
+        }else{
+          return response()->json(['success'=>'false']);
+        }
+  }
+}
 
     /**
      * Remove the specified resource from storage.

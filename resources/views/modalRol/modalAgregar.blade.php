@@ -4,6 +4,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="titulo-modal">Añadir Nuevo Rol</h5>
+        <div id="message-error" class="alert alert-danger alert-dismissible" role="alert" style="display:none" >
+          <strong id="msj"></strong>
+        </div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
