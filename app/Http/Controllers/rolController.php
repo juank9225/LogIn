@@ -81,7 +81,7 @@ class rolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RolRequest $request, $id)
     {
       if($request->ajax()){
         $id=$request->id;
@@ -105,6 +105,13 @@ class rolController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $rol=Rol::findOrfail($id);
+      $resul=$rol->delete();
+      if($resul){
+        return response()->json(['success'=>'true']);
+      }else{
+        return response()->json(['success'=>'false']);
+      }
+
     }
 }

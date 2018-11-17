@@ -5,6 +5,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="EditarModalLabel">Editar Rol</h5>
+        <div id="message-error-editar" class="alert alert-danger alert-dismissible" role="alert" style="display:none" >
+          <strong id="msj-editar"></strong>
+        </div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

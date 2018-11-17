@@ -5,8 +5,14 @@
         <div class="col-md-12 col-md-offset-2"style="margin-top:20px">
         <div class="card bg-light mb-3 " >
           <div class="card-header"><h5 class="card-title">Roles Activos  <a href="#" id="agregarModal" class="'btn btn-primary btn-sm" role="button" aria-pressed="true" data-toggle="modal" data-target="#modalagregar">NUEVO ROL</a></h5></div>
+          <div id="message-eliminar" class="alert alert-danger alert-dismissible" role="alert" style="display:none" >
+            <strong id="msj-eliminar">El Rol Se Elimino Correctamente.</strong>
+          </div>
           <div id="message-update" class="alert alert-success alert-dismissible" role="alert" style="display:none" >
-            <strong>Operacion Exitosa.</strong>
+            <strong >El Rol Se Actualizo Correctamente.</strong>
+          </div>
+          <div id="message-update-crear" class="alert alert-success alert-dismissible" role="alert" style="display:none" >
+            <strong >El Rol Se Creo Correctamente.</strong>
           </div>
           <div class="card-body">
             <table class="table">
@@ -21,7 +27,7 @@
                 <td>{{$rol->nombre}}</td>
                 <td>
                     <a href="#" id="ModalEditar" class="editar-btn btn btn-primary btn-sm" role="button" aria-pressed="true" data-toggle="modal" data-target="#modalEditar" value="{{$rol->id}}" onclick="mostrar({{$rol->id}});">Editar</a>
-                    <a href="#" class="'btn btn-danger btn-sm" role="button" aria-pressed="true" data-toggle="modal" data-target="#EliminarModal">Eliminar</a>
+                    <a href="#" id="eliminar-Btn" class="'btn btn-danger btn-sm" role="button" aria-pressed="true" value="{{$rol->id}}" onclick="eliminar({{$rol->id}});">Eliminar</a>
                 </td>
               </tbody>
                 @endforeach
